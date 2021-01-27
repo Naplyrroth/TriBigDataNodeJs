@@ -1,0 +1,22 @@
+{
+  "name": "tribigdatanodejs",
+  "version": "1.0.0",
+  "description": "Projet d'école, cours d'Algorithme",
+  "main": "CLI.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Naplyrroth/TriBigDataNodeJs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Naplyrroth/TriBigDataNodeJs/issues"
+  },
+  "homepage": "https://github.com/Naplyrroth/TriBigDataNodeJs#readme",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
+}
