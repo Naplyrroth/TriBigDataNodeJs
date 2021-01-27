@@ -4,13 +4,17 @@ const sort = require('./sort')
 const date = require('./date')
 const search = require('./search')
 const img = require('./img')
+const benchmark = require('./benchmark')
 
 for (let i = 2; i < args.length; i++) {
     const arg = args[i];
 
     if(arg == '-action') {
         if (args[i+1] == 'transform' && args.length > i+3) {
-            transform(args[i+2], args[i+3])
+            let transformFunction = ()=>{
+                transform(args[i+2], args[i+3])
+            }
+            benchmark.benchmark(transformFunction)
             break
         }
         else if (args[i+1] == 'sort_date' && args.length > i+3) {
@@ -43,4 +47,3 @@ for (let i = 2; i < args.length; i++) {
         break
     }
 }
-

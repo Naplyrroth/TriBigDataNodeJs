@@ -11,7 +11,7 @@ module.exports = {
     }
 }
 
-function sortDate (array); {
+function sortDate (array) {
     var done = false;
     while (!done) {
       done = true;
