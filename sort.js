@@ -6,29 +6,39 @@ module.exports = {
       // Get the data of the input file
       let readFile = fs.readFileSync(inputFile)
       let data = JSON.parse(readFile)
-    
-      var done = false;
-      while (!done) 
+      let done = false
+      
+      while(!done)
       {
-        done = true;
-        for (var i = 1; i < data.length; i += 1) 
+        for (let i = 1; i < data.length; i++) 
         {
-          if (data[i - 1] > data[i]) 
+          if (data[i - 1].release_date > data[i].release_date) 
           {
-            done = false;
-            var tmp = data[i - 1];
+            let changed = data[i - 1];
             data[i - 1] = data[i];
-            data[i] = tmp;
+            data[i] = changed;
           }
-        }
+          
+        } 
+        if (checkAllMoviesAreSorted(data))
+          done = true;
       }
-      return data;
+      fs.writeFileSync(outputFile, JSON.stringify(data))
     },
-    sortTitle: (inputFile, outputFile) => 
+
+    /*sortTitle: (inputFile, outputFile) => 
     {
         console.log('Sort title function');
         console.log(`Inputfile: ${inputFile}`);
-        console.log(`Ourputfile: ${outputFile}`);
-    }
-}
+        console.log(`Outputfile: ${outputFile}`);
+    }, */
 
+}
+function checkAllMoviesAreSorted(data) 
+    {
+      for (let i = 1; i < data.length; i++) {
+      if (data[i - 1].release_date > data[i].release_date)
+        return false;
+    }
+    return true;
+    }
