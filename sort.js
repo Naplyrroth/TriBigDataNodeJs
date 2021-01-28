@@ -1,29 +1,44 @@
+const fs = require('fs')
+
 module.exports = {
-    sortDate: (inputFile, outputFile) => {
-        console.log('Sort date function');
-        console.log(`Inputfile: ${inputFile}`);
-        console.log(`Ourputfile: ${outputFile}`);
+    sortDate: (inputFile, outputFile) => 
+    {
+      // Get the data of the input file
+      let readFile = fs.readFileSync(inputFile)
+      let data = JSON.parse(readFile)
+      let done = false
+      
+      while(!done)
+      {
+        for (let i = 1; i < data.length; i++) 
+        {
+          if (data[i - 1].release_date > data[i].release_date) 
+          {
+            let changed = data[i - 1];
+            data[i - 1] = data[i];
+            data[i] = changed;
+          }
+          
+        } 
+        if (checkAllMoviesAreSorted(data))
+          done = true;
+      }
+      fs.writeFileSync(outputFile, JSON.stringify(data))
     },
-    sortTitle: (inputFile, outputFile) => {
+
+    /*sortTitle: (inputFile, outputFile) => 
+    {
         console.log('Sort title function');
         console.log(`Inputfile: ${inputFile}`);
-        console.log(`Ourputfile: ${outputFile}`);
-    }
-}
+        console.log(`Outputfile: ${outputFile}`);
+    }, */
 
-function sortDate (array) {
-    var done = false;
-    while (!done) {
-      done = true;
-      for (var i = 1; i < array.length; i += 1) {
-        if (array[i - 1] > array[i]) {
-          done = false;
-          var tmp = array[i - 1];
-          array[i - 1] = array[i];
-          array[i] = tmp;
-        }
-      }
-    }
-  
-    return array;
 }
+function checkAllMoviesAreSorted(data) 
+    {
+      for (let i = 1; i < data.length; i++) {
+      if (data[i - 1].release_date > data[i].release_date)
+        return false;
+    }
+    return true;
+    }
