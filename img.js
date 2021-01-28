@@ -9,10 +9,10 @@ module.exports = {
                 request(url).pipe(fs.createWriteStream(folderPath + '/' + filename)).on('close', callback)
             })
         }
-        //Getting the image link an name
+
         let url = 'https://image.tmdb.org/t/p/w500/reNPMjkPg9f6wgf6kHSSkKjBarL.jpg'
-        let filename = 'Dragon Ball GT poster.jpg'
-        //Calling the download fonction and showing a message to advert the user that the function was laaunch correctly 
+        let filename = 'Dragon Ball GT poster' + '.jpg'
+          
         download(url, filename, folderPath, function(){
             console.log('done')
         })
