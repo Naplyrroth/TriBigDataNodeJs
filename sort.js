@@ -31,4 +31,3 @@ module.exports = {
         console.log(`Ourputfile: ${outputFile}`);
     }
 }
-
