@@ -40,7 +40,7 @@ for (let i = 2; i < args.length; i++) {
         }
         else if (args[i+1] == 'search_key_word' && args.length > i+4) {
             let searchKeyWordFunction = ()=> {
-                search.searchKeyWord(args[i+2], args[i+3], args[i+4])
+                search.searchKeyWord(args[i+2], args[i+3].toLowerCase(), args[i+4].toLowerCase())
             }
             benchmark.benchmark(searchKeyWordFunction)
             break

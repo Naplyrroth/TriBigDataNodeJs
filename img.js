@@ -4,8 +4,8 @@
         console.log(`Folder path: ${folderPath}`)
     }
 }
-constfs= require('fs')
-constrequest= require('request')
+const fs= require('fs')
+const request= require('request')
 
 constdownload = (url, path, callback) => {
     request.head(url, (err, res, body) => {
@@ -24,7 +24,6 @@ download(url, path, () => {
 
 
 var http = require('http')
-  , fs = require('fs')
   , options
 
 options = {
@@ -47,5 +46,4 @@ var request = http.get(options, function(res){
             console.log('File saved.')
         })
     })
-
 }) */
