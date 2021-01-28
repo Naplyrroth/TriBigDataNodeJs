@@ -16,19 +16,6 @@ for (let i = 2; i < args.length; i++) {
             }
             benchmark.benchmark(transformFunction) //And finally call it using the benchmark function. 
             break
-<<<<<<< HEAD
-        } else if (args[i+1] == 'sort_date' && args.length > i+3) {
-            sort.sortDate(args[i+2], args[i+3])
-            break
-        } else if (args[i+1] == 'sort_title' && args.length > i+3) {
-            sort.sortTitle(args[i+2], args[i+3])
-            break
-        } else if (args[i+1] == 'search_date' && args.length > i+4) {
-            date.searchDate(args[i+2], args[i+3], args[i+4])
-            break
-        } else if (args[i+1] == 'search_key_word' && args.length > i+4) {
-            search.searchKeyWord(args[i+2], args[i+3], args[i+4])
-=======
         }
         else if (args[i+1] == 'sort_date' && args.length > i+3) {
             let sortDateFunction = ()=> {
@@ -56,23 +43,17 @@ for (let i = 2; i < args.length; i++) {
                 search.searchKeyWord(args[i+2], args[i+3], args[i+4])
             }
             benchmark.benchmark(searchKeyWordFunction)
->>>>>>> main
             break
         } else {
             console.log("\nCommande invalide\n");
             break
         }
-<<<<<<< HEAD
-    } else if (arg == '-save' && args.length > i+1) {
-        img.saveImg(args[i+1])
-=======
     }
     else if (arg == '-save' && args.length > i+1) {
         let saveImgFunction = ()=> {
             img.saveImg(args[i+1])
         }
         benchmark.benchmark(saveImgFunction)
->>>>>>> main
         break
     } else {
         console.log("\nCommande invalide\n");
