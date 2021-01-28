@@ -1,6 +1,7 @@
 const fs = require('fs')
+const img = require('./saveImg')
 
-module.exports = (file, keyWord, genre) => {
+module.exports = (file, keyWord, genre, imgToSave) => {
     // Get the data of the file
     let readFile = fs.readFileSync(file)
     let allMovies = JSON.parse(readFile)
@@ -11,19 +12,23 @@ module.exports = (file, keyWord, genre) => {
         try {
             for (let j = 0; j < movie.genres.length; j++) {
                 if (movie.genres[j].toLowerCase() == genre && isDescriptionContains(keyWord, movie.overview)) {
-                    let obj = {
-                        "title": movie.title,
-                        "release_date": movie.release_date
-                    }
-                    
-                    movies.push(obj)
+                    movies.push(movie)
                 }
             }
         } catch (TypeError) {}
     }
 
+    // Get the latest movies from movies array
+    let latestMovie = getLatestMovie(movies)
+
+    // Download image if user wants to
+    if (imgToSave != false) {
+        img.saveImg(imgToSave, latestMovie.poster, latestMovie.title)
+        img.createJSONfile(latestMovie, imgToSave)
+    }
+
     try {
-        console.log(`\nLe film le plus récent dans le genre ${genre} contenant le mot clé '${keyWord}' dans sa description est '${getLatestMovie(movies)}'`);
+        console.log(`\nLe film le plus récent dans le genre ${genre} contenant le mot clé '${keyWord}' dans sa description est '${latestMovie.title}', sorti en ${getYear(latestMovie.release_date)}`);
     } catch (TypeError) {
         console.log(`\nAucun film n'a été trouvé dans le genre ${genre} contenant le mot clé '${keyWord}' dans sa description`);
     }
@@ -48,5 +53,10 @@ function getLatestMovie(movies) {
             latestMovie = movies[i]
         }
     }
-    return latestMovie.title
+    return latestMovie
+}
+
+function getYear(time) {
+    let date = new Date(time * 1000)
+    return date.getFullYear()
 }

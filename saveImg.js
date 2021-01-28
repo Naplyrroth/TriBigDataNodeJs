@@ -18,8 +18,8 @@ module.exports = {
         
         download(url, filename, folderPath)
     },
-    createJSONfile: (movies) => {
-        fs.writeFileSync('moviesDownloaded.json', JSON.stringify(movies, null, '\t'))
+    createJSONfile: (movies, folderPath) => {
+        fs.writeFileSync(`${folderPath}/moviesDownloaded.json`, JSON.stringify(movies, null, '\t'))
     }
 }
 

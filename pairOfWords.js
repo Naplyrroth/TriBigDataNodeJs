@@ -7,6 +7,8 @@ module.exports = (file) => {
     let overviews = getOverviewsArray(movies)
 
     console.log(overviews);
+    // the variable 'overview' contains a table with each words of the description for each movie
+    // Each word contained in the arrays has a length greater than 3
 }
 
 function getOverviewsArray(movies) {

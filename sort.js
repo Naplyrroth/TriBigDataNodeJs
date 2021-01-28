@@ -52,7 +52,7 @@ module.exports =
         if (checkAllMoviesTitlesAreSorted(data))
           done = true;
       }
-      fs.writeFileSync(outputFile, JSON.stringify(data))
+      fs.writeFileSync(outputFile, JSON.stringify(data, null, '\t'))
     },
 
 }

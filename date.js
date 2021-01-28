@@ -1,5 +1,4 @@
 const fs = require('fs')
-const saveImg = require('./saveImg')
 const img = require('./saveImg')
 
 module.exports = {
@@ -41,7 +40,7 @@ function dichotomicSearch(movies, year) {
 function unsortedSearch(movies, year, imgToSave) {
     let count = 0
     let moviesDownloaded = []
-    
+
     for (let i = 0; i < movies.length; i++) {
         // Get the year of the release date
         let releaseYear = getYear(movies[i].release_date)
@@ -57,8 +56,8 @@ function unsortedSearch(movies, year, imgToSave) {
         }
     }
     // If user wants to download images, create the JSON file with all movies who was downloaded
-    if (imgToSave != false) {
-        img.createJSONfile(moviesDownloaded)
+    if (imgToSave != false && count != 0) {
+        img.createJSONfile(moviesDownloaded, imgToSave)
     }
     // Case where the search did not find a result
     if (count == 0) {
