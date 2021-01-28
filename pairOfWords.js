@@ -17,11 +17,12 @@ function getOverviewsArray(movies) {
         const overviews = movies[i].overview.split(' ');
         const overview = []
         
-        // D'ont push words with less than 4 letters and delete dots and commas at the end of words
+        // D'ont push words with less than 4 letters
         for (let j = 0; j < overviews.length; j++) {
             let word
             const lastLetter = overviews[j][overviews[j].length-1]
 
+            // Delete dots and commas at the end of words
             if (lastLetter == ',' || lastLetter == '.') {
                 word = overviews[j].slice(0, -1)
             } else {
