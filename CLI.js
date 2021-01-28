@@ -5,6 +5,7 @@ const date = require('./date')
 const search = require('./search')
 const img = require('./img')
 const benchmark = require('./benchmark')
+const color = require('./majorColor')
 const pairOfWords = require('./pairOfWords')
 
 for (let i = 2; i < args.length; i++) {
@@ -51,6 +52,13 @@ for (let i = 2; i < args.length; i++) {
                 pairOfWords(args[i+2])
             }
             benchmark.benchmark(pairOfWordsFunction)
+            break
+        }
+        else if (args[i+1] == 'get_color' && args.length > i+1) {
+            let colorFunction = ()=> {
+                color(args[i+2])
+            }
+            benchmark.benchmark(colorFunction)
             break
         }
         else {
