@@ -1,24 +1,24 @@
 module.exports = {
     saveImg: (folderPath) => {
-        console.log('Save image function');
-        console.log(`Folder path: ${folderPath}`)
+
+        let download = function(url, filename, folderPath, callback){
+            request.head(url, function(err, res, body){
+                console.log('content-type:', res.headers['content-type'])
+                console.log('content-length:', res.headers['content-length'])
+          
+                request(url).pipe(fs.createWriteStream(folderPath + '/' + filename)).on('close', callback)
+            })
+        }
+        
+        let url = 'https://image.tmdb.org/t/p/w500/reNPMjkPg9f6wgf6kHSSkKjBarL.jpg'
+        let filename = 'Dragon Ball GT poster.jpg'
+          
+        download(url, filename, folderPath, function(){
+            console.log('done')
+        })
+
     }
 }
 const fs= require('fs')
 const request= require('request')
-
-const download = (url, path, callback) => {
-    request.head(url, (err, res, body) => {
-        request(url)
-        .pipe(fs.createWriteStream(path))
-        .on('close', callback)
-    })
-}
-const url = 'https://image.tmdb.org/t/p/w500/f1IFS23zAXRUsRa35JuEuLHZtSV.jpg'
-const path= 'G:\TriBigDataNodeJs\Img'
-download(url, path, () => {
-    console.log('Done!')
-})
-
-
 
