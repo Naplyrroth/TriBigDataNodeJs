@@ -12,5 +12,5 @@ module.exports = (inputFile, outputFile) => {
         movie.title += ` ${releaseDate.getFullYear()}`
     }
     // Create the new file
-    fs.writeFileSync(outputFile, JSON.stringify(data))
+    fs.writeFileSync(outputFile, JSON.stringify(data,null, '\t'))
 }

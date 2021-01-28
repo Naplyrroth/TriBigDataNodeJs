@@ -26,7 +26,7 @@ module.exports =
         if (checkAllMoviesDatesAreSorted(data))
           done = true;
       }
-      fs.writeFileSync(outputFile, JSON.stringify(data))
+      fs.writeFileSync(outputFile, JSON.stringify(data, null, '\t'))
     },
 
     sortTitle: (inputFile, outputFile) => 
