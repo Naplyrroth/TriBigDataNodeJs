@@ -1,4 +1,4 @@
-module.exports = {
+/* module.exports = {
     saveImg: (folderPath) => {
         console.log('Save image function');
         console.log(`Folder path: ${folderPath}`)
@@ -46,4 +46,4 @@ var request = http.get(options, function(res){
             console.log('File saved.')
         })
     })
-})
+}) */
