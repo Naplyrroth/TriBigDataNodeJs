@@ -1,14 +1,11 @@
-const fs= require('fs')
-const request= require('request')
-
 module.exports = {
     saveImg: (folderPath) => {
-
+        //Creating the functionto download the image
         let download = function(url, filename, folderPath, callback){
             request.head(url, function(err, res, body){
                 console.log('content-type:', res.headers['content-type'])
                 console.log('content-length:', res.headers['content-length'])
-          
+                //Getting the foler name an image name to download it in the right folder
                 request(url).pipe(fs.createWriteStream(folderPath + '/' + filename)).on('close', callback)
             })
         }
@@ -22,4 +19,6 @@ module.exports = {
 
     }
 }
+const fs= require('fs')
+const request= require('request')
 
