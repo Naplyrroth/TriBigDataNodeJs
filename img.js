@@ -1,4 +1,4 @@
-/*module.exports = {
+module.exports = {
     saveImg: (folderPath) => {
         console.log('Save image function');
         console.log(`Folder path: ${folderPath}`)
@@ -15,7 +15,7 @@ constdownload = (url, path, callback) => {
     })
 }
 consturl = 'https://image.tmdb.org/t/p/w500/reNPMjkPg9f6wgf6kHSSkKjBarL.jpg'
-constpath= './images/image.png'
+constpath= 'G:\TriBigDataNodeJs\Img'
 download(url, path, () => {
     console.log('Done!')
 })
@@ -46,4 +46,4 @@ var request = http.get(options, function(res){
             console.log('File saved.')
         })
     })
-}) */
+})
