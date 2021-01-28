@@ -4,9 +4,9 @@ module.exports = (file) => {
     // Get the data of the input file
     let readFile = fs.readFileSync(file)
     let movies = JSON.parse(readFile)
-    let descriptions = getOverviewsArray(movies)
+    let overviews = getOverviewsArray(movies)
 
-    console.log(descriptions);
+    console.log(overviews);
 }
 
 function getOverviewsArray(movies) {
@@ -20,7 +20,7 @@ function getOverviewsArray(movies) {
         // D'ont push words with less than 4 letters and delete dots and commas at the end of words
         for (let j = 0; j < overviews.length; j++) {
             let word
-            const lastLetter = overviews[j][overviews[j].length]
+            const lastLetter = overviews[j][overviews[j].length-1]
 
             if (lastLetter == ',' || lastLetter == '.') {
                 word = overviews[j].slice(0, -1)
@@ -31,7 +31,6 @@ function getOverviewsArray(movies) {
                 overview.push(word)
             }
         }
-
         let obj = {
             "id": movies[i].id,
             "overview": overview
