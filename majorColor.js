@@ -17,6 +17,8 @@ module.exports = () =>
             }
             pixel.push(rowPixels)
         }
-        console.log(pixel)
+        const pixelMax = pixel => pixel.reduce((a,b) => a + b, 0)
+        let pixelAvg = pixelMax/pixel.length
+        console.log(pixelAvg);
     })
 }
