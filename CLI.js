@@ -5,6 +5,7 @@ const date = require('./date')
 const search = require('./search')
 const img = require('./img')
 const benchmark = require('./benchmark')
+const pairOfWords = require('./pairOfWords')
 
 for (let i = 2; i < args.length; i++) {
     const arg = args[i];
@@ -44,7 +45,15 @@ for (let i = 2; i < args.length; i++) {
             }
             benchmark.benchmark(searchKeyWordFunction)
             break
-        } else {
+        }
+        else if (args[i+1] == 'get_pair' && args.length > i+1) {
+            let pairOfWordsFunction = ()=> {
+                pairOfWords(args[i+2])
+            }
+            benchmark.benchmark(pairOfWordsFunction)
+            break
+        }
+        else {
             console.log("\nCommande invalide\n");
             break
         }

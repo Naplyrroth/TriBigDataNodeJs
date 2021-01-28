@@ -7,13 +7,16 @@ module.exports = {
         let data = JSON.parse(readFile)
 
         if (sort == 'true') {
-            //dichotomicSearch(data, parseInt(year))
-            basicSearch(data, parseInt(year))
+            sortedSearch(data, parseInt(year))
 
         } else {
-            basicSearch(data, parseInt(year))
+            unsortedSearch(data, parseInt(year))
         }
     }
+}
+
+function sortedSearch(movies, year) {
+    
 }
 
 function dichotomicSearch(movies, year) {
@@ -33,7 +36,7 @@ function dichotomicSearch(movies, year) {
     }
 }
 
-function basicSearch(movies, year) {
+function unsortedSearch(movies, year) {
     let count = 0
     for (let i = 0; i < movies.length; i++) {
         // Get the year of the release date

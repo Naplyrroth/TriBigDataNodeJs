@@ -26,7 +26,7 @@ module.exports =
         if (checkAllMoviesDatesAreSorted(data)) //Every time a loop is over, check if every files are sorted, if not, begin another loop
           done = true; //In the end, set done to true, to exit the loop
       }
-      fs.writeFileSync(outputFile, JSON.stringify(data)) //Write the data in a new file
+      fs.writeFileSync(outputFile, JSON.stringify(data, null, '\t'))
     },
 
     sortTitle: (inputFile, outputFile) => //The logic is the exact same as sortDate
