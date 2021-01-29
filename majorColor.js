@@ -35,10 +35,10 @@ module.exports = () =>
 
 function RGBToHex(r,g,b) 
 {
-    let hexR = r.parseInt(16);
-    let hexG = g.parseInt(16);
-    let hexB = b.parseInt(16);
-    
+  console.log(r);
+    let hexR = parseInt(r, 16);
+    let hexG = parseInt(g, 16);
+    let hexB = parseInt(b ,16);
     console.log(hexR);
 
     if (hexR.length == 1)
