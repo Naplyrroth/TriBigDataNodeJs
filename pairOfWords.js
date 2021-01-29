@@ -5,7 +5,7 @@ module.exports = (file) => {
     let readFile = fs.readFileSync(file)
     let movies = JSON.parse(readFile)
     let overviews = getOverviewsArray(movies)
-
+    let pairs = Getpairs (overviews)
     console.log(overviews);
     // the variable 'overview' contains a table with each words of the description for each movie
     // Each word contained in the arrays has a length greater than 3
@@ -19,7 +19,7 @@ function getOverviewsArray(movies) {
         const overviews = movies[i].overview.split(' ');
         const overview = []
         
-        // D'ont push words with less than 4 letters
+        // Don't push words with less than 4 letters
         for (let j = 0; j < overviews.length; j++) {
             let word
             const lastLetter = overviews[j][overviews[j].length-1]
@@ -34,6 +34,7 @@ function getOverviewsArray(movies) {
                 overview.push(word)
             }
         }
+    
         let obj = {
             "id": movies[i].id,
             "overview": overview
@@ -41,4 +42,14 @@ function getOverviewsArray(movies) {
         overviewsArray.push(obj)
     }
     return overviewsArray
+}
+
+function Getpairs (overviews){
+    let pairs = []
+    for (let j = 0; j < overviews.length; j++) {
+        pairs.push(word)
+        
+        
+    }
+
 }
