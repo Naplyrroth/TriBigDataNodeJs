@@ -2,7 +2,8 @@ const Jimp = require("jimp");
 
 module.exports = () =>
 {
-    Jimp.read('https://image.tmdb.org/t/p/w500/oljiDFPyMY437BRRV69AzVDSiKy.jpg', function(err, image){
+    Jimp.read('https://image.tmdb.org/t/p/w500/oljiDFPyMY437BRRV69AzVDSiKy.jpg', function(err, image)
+    {
         //loop through every pixel of the image
         let width = image.bitmap.width;
         let height = image.bitmap.height;
@@ -24,24 +25,28 @@ module.exports = () =>
             }
             pixels.push(rowPixels)
         }
-        const pixelAvgR = pixelR.reduce((a,b) => a + b)/pixelR.length
-        const pixelAvgG = pixelG.reduce((a,b) => a + b)/pixelG.length
-        const pixelAvgB = pixelB.reduce((a,b) => a + b)/pixelB.length
+        let pixelAvgR = pixelR.reduce((a,b) => a + b)/pixelR.length
+        let pixelAvgG = pixelG.reduce((a,b) => a + b)/pixelG.length
+        let pixelAvgB = pixelB.reduce((a,b) => a + b)/pixelB.length
 
-        function RGBToHex(r,g,b) 
-        {
-            r = pixelAvgR.toString(16);
-            g = pixelAvgG.toString(16);
-            b = pixelAvgB.toString(16);
-          
-            if (r.length == 1)
-              r = "0" + r;
-            if (g.length == 1)
-              g = "0" + g;
-            if (b.length == 1)
-              b = "0" + b;
-          
-            return "#" + r + g + b;
-        }  
+        console.log(RGBToHex(pixelAvgR, pixelAvgG, pixelAvgB));
     })
 }
+
+function RGBToHex(r,g,b) 
+{
+    let hexR = r.parseInt(16);
+    let hexG = g.parseInt(16);
+    let hexB = b.parseInt(16);
+    
+    console.log(hexR);
+
+    if (hexR.length == 1)
+        hexR = "0" + hexR;
+    if (hexG.length == 1)
+        hexG = "0" + hexG;
+    if (hexB.length == 1)
+        hexB = "0" + hexB;
+          
+    return "#" + hexR + hexG + hexB;
+}  
